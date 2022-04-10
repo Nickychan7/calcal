@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +13,10 @@
 
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-	<title>Calcal</title>
 </head>
 <body>
-	<div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+	  <div class="loader_bg">
+        <div class="loader"></div>
     </div>
     <div class="main">
         <div class="container">
@@ -88,7 +87,7 @@
                               <input class="inputarea" placeholder="height (cm)" type="text" name="height" maxlength="3" id="height" oninput="return onlynum('height');"> 
                            </div>
                            <div class="col-md-12">
-                              <input class="inputarea" placeholder="exercise intensity in a week (0-7)" type="text" name="exercise" maxlength="1" id="exercise" oninput="return onlynum('exercise');"> 
+                              <input class="inputarea" placeholder="exercise in a week (0-7)" type="text" name="exercise" maxlength="1" id="exercise" oninput="return onlynum('exercise');"> 
                            </div>
 	                        <div class="col-sm-12">
 	                           <button class="send_btn" onclick="check_input()">count</button>
@@ -117,5 +116,11 @@
 	<script src="js/main.js"></script>
    <script src="js/bodyfat.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script>
+      $( document ).ready(function() {
+         $('.main').hide().delay(1900).fadeIn(200);
+         $(".loader_bg").fadeTo(800,1).fadeOut(1000);
+      });
+   </script>
 </body>
 </html>

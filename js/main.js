@@ -1,21 +1,14 @@
-const loader = document.querySelector('.loader_bg');
+//const loader = document.querySelector('.loader_bg');
 const main = document.querySelector('.main');
 const calories = document.querySelector('.calories');
 const foodplan = document.querySelector('.foodplan');
 const bodyfat = document.querySelector('.bodyfat');
 const send_btn = document.querySelector('.send_btn');
 const selector = document.querySelector('.selector');
-//document.getElementById("bodyfat_option").addEventListener("click", show_option);
-//document.getElementById("calories_option").addEventListener("click", show_option);
-//document.getElementById("foodplan_option").addEventListener("click", show_option);
+
 
 
 function init() {
-	setTimeout(() =>{
-		loader.style.opacity = 0;
-		loader.style.display = 'none';
-	}, 1000);
-
 	calories.style.display = 'none';
 	bodyfat.style.display = 'none';
 	foodplan.style.display = 'none';
@@ -26,9 +19,6 @@ function init() {
 	var female_label = document.getElementById('female_label');
 	female_label.style.color = '#fc9483';
 	
-}
-function showmain(){
-	main.style.opacity = 1;
 }
 
 function show_option(option){
@@ -256,7 +246,4 @@ function comma_number(num) {
 
 
 
-
-
 init();
-showmain();
