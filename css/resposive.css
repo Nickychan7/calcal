@@ -16,9 +16,8 @@
 @media (max-width: 575px) {
     
     
-    
     .main_form{
-        background: #333;
+        
     }
 
     .main{
@@ -31,8 +30,33 @@
         margin-top: 30px;
     }
     .Our_box{
-        width: 70%;
-        height: 80%;
+        width: 50%;
+        height: 65%;
     }
+
+    .main .Our_box {
+        border-radius: 30px;
+        margin-bottom: 25px;
+        padding: 30px 0;
+    }
+
+    .main .Our_box h4 {
+        font-size: 12px;
+        line-height: 50px;
+        font-weight: 600;
+        padding-top: 15px;
+        padding-bottom: 0;
+    }
+
+    .main .read_more {
+        margin-top: 30px;
+        margin-bottom: 0px;
+    }
+
+    img {
+        height: 40%;
+    }
+
+
 }
 
