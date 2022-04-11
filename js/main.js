@@ -183,9 +183,9 @@ function show_result(bmr,get_exercise,bmi){
 	var bmi_text = "BMI : "+bmi.toFixed(2)+level_bmi(bmi)+"<br>";
 	var bmr_text = "BMR : "+comma_number(bmr)+" kkal <br>";
 	var calories_text = "Calories / Day : "+comma_number(total)+" kkal<br>";
-	var carbo_text = "Carbo : "+comma_number(bmr*60/100)+" kkal "+"("+((bmr*60/100)/4).toFixed(0)+" gram)<br>";
-	var protein_text = "Protein : "+comma_number(bmr*15/100)+" kkal "+"("+((bmr*15/100)/4).toFixed(0)+" gram)<br>";
-	var fat_text = "Fat : "+comma_number(bmr*15/100)+" kkal "+"("+((bmr*15/100)/9).toFixed(0)+" gram)<br>";
+	var carbo_text = "Carbo : "+((total*60/100)/4).toFixed(0)+" gram<br>";
+	var protein_text = "Protein : "+((total*15/100)/4).toFixed(0)+" gram<br>";
+	var fat_text = "Fat : "+((total*15/100)/9).toFixed(0)+" gram<br>";
 
 	result.innerHTML = bmi_text+bmr_text+calories_text+carbo_text+protein_text+fat_text;
 }
