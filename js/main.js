@@ -13,11 +13,7 @@ function init() {
 	bodyfat.style.display = 'none';
 	foodplan.style.display = 'none';
 
-	var result = document.getElementById('result_calories');
-	result.style.color = "#fc9483";
-
-	var female_label = document.getElementById('female_label');
-	female_label.style.color = '#fc9483';
+	radio_button();
 	
 }
 
