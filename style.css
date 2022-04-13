@@ -205,6 +205,17 @@ label h5{
      background: #ecf0f3;;
      height: 100%;
 }
+.bodyfat {
+     padding: 10px 0;
+     background: #ecf0f3;;
+     height: 100%;
+}
+.foodplan {
+     padding: 10px 0;
+     background: #ecf0f3;;
+     height: 100%;
+}
+
 .main_form {
      padding: 40px 30px;
      background: #fff;
@@ -320,12 +331,3 @@ label h5{
     transform:translateY(-2px);
 }
 
-.bodyfat {
-     padding: 10px 0;
-     background: #000;
-}
-
-.bodyfat {
-     padding: 10px 0;
-     background: #000;
-}
