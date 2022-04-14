@@ -1,6 +1,8 @@
 @import url(css/animate.min.css);
 @import url(css/normalize.css);
 @import url(css/owl.carousel.min.css);
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
+
 
 
 html {
@@ -72,6 +74,7 @@ h6 {
 }
 label h5{
      text-align: left;
+     font-family: 'BIZ UDGothic', sans-serif;
 }
 
 * {
@@ -331,3 +334,6 @@ label h5{
     transform:translateY(-2px);
 }
 
+.div_result{
+     text-align: center;
+}

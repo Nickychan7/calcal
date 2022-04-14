@@ -1,10 +1,7 @@
-//const loader = document.querySelector('.loader_bg');
 const main = document.querySelector('.main');
 const calories = document.querySelector('.calories');
 const foodplan = document.querySelector('.foodplan');
 const bodyfat = document.querySelector('.bodyfat');
-const send_btn = document.querySelector('.send_btn');
-const selector = document.querySelector('.selector');
 
 
 
@@ -12,9 +9,7 @@ function init() {
 	calories.style.display = 'none';
 	bodyfat.style.display = 'none';
 	foodplan.style.display = 'none';
-
 	radio_button();
-	
 }
 
 function show_option(option){
@@ -63,19 +58,25 @@ function radio_button(){
 	var female_label =document.getElementById('female_label');
 	var male_label =document.getElementById('male_label');
 	var result = document.getElementById('result_calories');
+	var selector_calories = document.getElementById('selector_calories');
+	var calories_btn = document.getElementById('calories_btn');
+	var calories_title = document.getElementById('calories_title');
+
 	for(i = 0; i < gender.length; i++) {
         if(gender[i].checked){
         	if(gender[i].value=="male"){
-        		send_btn.style.backgroundColor = "#145369";
-        		selector.style.color = "#145369";
+        		calories_btn.style.backgroundColor = "#145369";
+        		selector_calories.style.color = "#145369";
+        		calories_title.style.color = "#145369";
         		female_label.style.color = "#145369";
         		male_label.style.color = "#145369";
         		result.style.color = "#145369";
 
 	        }
 	        else if (gender[i].value=="female"){
-	        	send_btn.style.backgroundColor = "#fc9483";
-	        	selector.style.color = "#fc9483";
+	        	calories_btn.style.backgroundColor = "#fc9483";
+	        	selector_calories.style.color = "#fc9483";
+	        	calories_title.style.color = "#fc9483";
 	        	female_label.style.color = "#fc9483";
         		male_label.style.color = "#fc9483";
 	        	result.style.color = "#fc9483";
@@ -116,30 +117,24 @@ function empty_check(){
 
 }
 function check_input(){
-	
-	if (send_btn.innerHTML == "count" && empty_check() == true){
+	var calories_btn = document.getElementById('calories_btn');
+	if (calories_btn.innerHTML == "count" && empty_check() == true){
 		status_input_calories(true);
-		send_btn.innerHTML = "clear";
+		calories_btn.innerHTML = "edit";
     	count_calories();
     	var result = document.getElementById('result_calories');
     	result.scrollIntoView();
 
 	}
-	else if (send_btn.innerHTML == "clear"){
+	else if (calories_btn.innerHTML == "edit"){
 		status_input_calories(false);
-    	document.getElementById('age').value = "";
-    	document.getElementById('weight').value = "";
-    	document.getElementById('height').value = "";
-    	document.getElementById('exercise').value = "";
     	document.getElementById('result_calories').innerHTML = "Result";
     	
-    	send_btn.innerHTML = "count";
+    	calories_btn.innerHTML = "count";
     }
     else{
     	empty_check();
     }
-	
-	
 	
 }
 
@@ -169,7 +164,6 @@ function count_calories(){
 	        show_result(bmr,get_exercise,bmi);
         }
         
-        
     }
 }
 
@@ -179,9 +173,9 @@ function show_result(bmr,get_exercise,bmi){
 	var bmi_text = "BMI : "+bmi.toFixed(2)+level_bmi(bmi)+"<br>";
 	var bmr_text = "BMR : "+comma_number(bmr)+" kkal <br>";
 	var calories_text = "Calories / Day : "+comma_number(total)+" kkal<br>";
-	var carbo_text = "Carbo : "+((total*60/100)/4).toFixed(0)+" gram<br>";
-	var protein_text = "Protein : "+((total*15/100)/4).toFixed(0)+" gram<br>";
-	var fat_text = "Fat : "+((total*15/100)/9).toFixed(0)+" gram<br>";
+	var carbo_text = "Carbo : "+((total*60/100)/4).toFixed(0)+" g ("+comma_number((total*60/100).toFixed(0))+" kkal)<br>";
+	var protein_text = "Protein : "+((total*15/100)/4).toFixed(0)+" g ("+comma_number((total*15/100).toFixed(0))+" kkal)<br>";
+	var fat_text = "Fat : "+((total*15/100)/9).toFixed(0)+" g ("+comma_number((total*15/100).toFixed(0))+" kkal)<br>";
 
 	result.innerHTML = bmi_text+bmr_text+calories_text+carbo_text+protein_text+fat_text;
 }
@@ -238,8 +232,6 @@ function comma_number(num) {
 	var x = Math.trunc(num)
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
-
-
 
 
 init();
