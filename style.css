@@ -1,6 +1,4 @@
-@import url(css/animate.min.css);
-@import url(css/normalize.css);
-@import url(css/owl.carousel.min.css);
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
 
 
@@ -11,14 +9,12 @@ html {
 }
 
 body {
-     color: #666666;
      font-size: 14px;
      font-family: 'Raleway', sans-serif;
      line-height: 1.80857;
      font-weight: normal;
      background: #ecf0f3;
 }
-
 
 a {
      color: #1f1f1f;
@@ -48,7 +44,17 @@ h6 {
 }
 
 h1 {
-     font-size: 24px;
+     text-align: center;
+     position: relative;
+     padding: 0;
+     margin: 0;
+     font-family: "Raleway", sans-serif;
+     font-weight: 300;
+     font-size: 40px;
+     color: #080808;
+     -webkit-transition: all 0.4s ease 0s;
+     -o-transition: all 0.4s ease 0s;
+     transition: all 0.4s ease 0s;
 }
 
 h2 {
@@ -136,17 +142,26 @@ label h5{
      filter: blur(20px);
 }
 
-
-
-.titlepage {
-     text-align: center;
-
+title h1 {
+     font-size:26px; 
+     font-weight:700;  
+     letter-spacing:1px; 
+     text-transform:uppercase; 
+     width:160px; text-align:center; 
+     margin:auto; 
+     white-space:nowrap; 
+     padding-bottom:13px;
 }
-
-.titlepage h2 {
-     font-size: 45px;
-     line-height: 50px;
-     font-weight: bold;
+.title{
+     text-align: center;
+}
+.title span {
+     text-transform: none;
+     font-size: 24px;
+     font-weight: normal;
+     font-style: italic; font-family: "Playfair Display","Bookman",serif;
+     color:#999; letter-spacing:-0.005em; word-spacing:1px;
+     letter-spacing:none;
 }
 .main {
      background: #ecf0f3;
@@ -158,10 +173,11 @@ label h5{
 
 .main .Our_box {
      box-shadow: #ddd 0px 0px 10px 0px;
-     border-radius: 20px;
+     border-radius: 100px;
      text-align: center;
      margin-bottom: 30px;
      padding: 60px 0;
+     box-shadow:0 0 10px rgba(0,0,0,.2);
 }
 
 .main .Our_box h4 {
@@ -337,3 +353,5 @@ label h5{
 .div_result{
      text-align: center;
 }
+
+

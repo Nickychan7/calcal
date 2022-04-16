@@ -1,0 +1,62 @@
+h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.title h1 {
+  font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:160px; text-align:center; margin:auto; white-space:nowrap; padding-bottom:13px;
+}
+.title h1:before {
+    background-color: #145369;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 56px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+.title h1:after {
+    background-color: #145369;
+    content: '';
+    display: block;
+  position:absolute; right:0; bottom:0;
+    height: 3px;
+    width: 56px;
+    margin-bottom: 0.25em;
+    margin-right: 20px;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.title_zone {
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  background: #f8f8f8;
+  width: 70%;
+  max-width: 500px;
+  padding: 2em;
+  margin: 1.5em auto;
+  border: 3px solid rgba(0, 0, 0, 0.08);
+}
+
+.title span {
+  text-transform: none;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: italic; font-family: "Playfair Display","Bookman",serif;
+  color:#999; letter-spacing:-0.005em; word-spacing:1px;
+  letter-spacing:none;
+}
