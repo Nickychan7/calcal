@@ -198,7 +198,6 @@ title h1 {
 .main .read_more:hover {
      color: #fff;
      background: #000;
-
 }
 
 .read_more {
@@ -219,17 +218,13 @@ title h1 {
      transition: ease-in all 0.5s;
 }
 
-.calories {
+.menu {
      padding: 10px 0;
      background: #ecf0f3;;
      height: 100%;
 }
-.bodyfat {
-     padding: 10px 0;
-     background: #ecf0f3;;
-     height: 100%;
-}
-.foodplan {
+
+.div_form {
      padding: 10px 0;
      background: #ecf0f3;;
      height: 100%;
@@ -302,10 +297,27 @@ title h1 {
 .back_img figure img {
      width: 100%;
 }
-
+.bf_type{
+     justify-content: center;
+}
+.selector_bf_type {
+     color: #145369;
+     width:44%;
+     height:80px;
+     justify-content:space-around;
+     align-items:center;
+     border-radius:9999px;
+     box-shadow:0 0 16px rgba(0,0,0,.2);
+     margin-bottom: 20px;
+     margin-left: 3%;
+     margin-right: 3%;
+}
+.selector_bf_type:hover {
+     color: #fff;
+     background: #145369;
+}
 
 .selector{
-
     position:relative;
     color: #145369;
     width:100%;

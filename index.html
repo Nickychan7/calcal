@@ -52,20 +52,55 @@
          
      </div>
    </div>
-   <div class="calories">
+   <div class="menu">
    	<div class="container ">
          <div class="row justify-content-md-center" >
             <div class="col-md-6">
-               <div class="selector" id="calories_title">
+               <div class="selector" id="calories">
                   <div class="selecotr-item">
                      CALORIES COUNT
                   </div>
                </div>
+               <div id="bodyfat">
+                  <div class="selector" id="bodyfat_title">
+                     <div class="selecotr-item">
+                        BODY FAT
+                     </div>
+                  </div>
+                  <div class="row justify-content-md-center">
+                     <div class="col-md-8">
+                        <div class="bf_type row">
+                           <div class="selector_bf_type" id="simple_bf_selector" onclick="bf_type(0)">
+                              <div class="selecotr-item">
+                                 <input type="button" id="simple_bf" name="bf_type" class="selector-item_radio" value="simple">
+                                 <label for="bf_type" class="selector-item_label">Simple</label>
+                              </div>
+                           </div> 
+                           <div class="selector_bf_type" id="specified_bf_selector" onclick="bf_type(1)">
+                              <div class="selecotr-item">
+                                 <input type="radio" name="bf_type" id="specified_bf" class="selector-item_radio" value="specified">
+                                 <label for="bf_type" class="selector-item_label">Specified</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>   
+                  </div>
+               </div>
+               <div class="selector" id="foodplan">
+                  <div class="selecotr-item">
+                     FOOD PLAN
+                  </div>
+               </div>
             </div>
-         </div>
-   		<div class="row justify-content-md-center">
-   			<div class="col-md-6">
-   				<form id="calories_form" name="calories_form" class="main_form" onsubmit="return false">
+         </div>	
+   	</div>
+   </div>
+   <div class="div_form">
+      <div class="container">
+         <div class="row justify-content-md-center">
+            <div class="col-md-6">
+               <form id="main_form" name="main_form" class="main_form" onsubmit="return false">
+                  <section class="calories_form">
                     <div class="row">
                         <div class="col-md-12">
                            <div class="selector" id="selector_calories">
@@ -98,68 +133,67 @@
                            <br><br>
                            <label><h5 id="result_calories">Result</h5></label>
                         </div>
-                    </div>
-                </form>
-   			</div>
-   		</div>	
-   	</div>
-   </div>
-   <div class="bodyfat">
-      <div class="container">
-         <div class="row justify-content-md-center" >
-            <div class="col-md-6">
-               <div class="selector">
-                  <div class="selecotr-item">
-                     BODY FAT
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="row justify-content-md-center">
-            <div class="col-md-6">
-               <form name="bodyfat_form" id="bodyfat_form" class="main_form" onsubmit="return false">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="selector">
-                           <div class="selecotr-item">
-                              <input type="radio" name="gender_bf" class="selector-item_radio" value="female" checked>
-                              <label for="female_form2" class="selector-item_label" id="female_label_form2">Female</label>
-                           </div>
-                           <div class="selecotr-item">
-                              <input type="radio" name="gender_bf" class="selector-item_radio" value="male">
-                              <label for="male_form2" class="selector-item_label" id="male_label_form2">Male</label>
-                           </div>
+                     </div>
+                  </section>
+
+                  <section class="bodyfat_form_simple">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="selector" id="selector_bf_simple">
+                              <div class="selecotr-item">
+                                 <input type="radio" id="female_simple" name="gender_simple" class="selector-item_radio" value="female" onclick="radio_bf_simple()">
+                                 <label for="female_simple" class="selector-item_label" id="female_label_simple">female</label>
+                              </div>
+                              <div class="selecotr-item">
+                                 <input type="radio" id="male_simple" name="gender_simple" class="selector-item_radio" value="male" onclick="radio_bf_simple()" checked>
+                                 <label for="male_simple" class="selector-item_label" id="male_label_simple">male</label>
+                              </div>
+                           </div>                 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="inputarea" placeholder="age (year)" type="text" name="age_simple" maxlength="3" id="age_simple" oninput="return onlynum('age_simple');"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="inputarea" placeholder="weight (kg)" type="text" name="weight_simple" maxlength="3" id="weight_simple" oninput="return onlynum('weight_simple');"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="inputarea" placeholder="height (cm)" type="text" name="height_simple" maxlength="3" id="height_simple" oninput="return onlynum('height_simple');"> 
                         </div>
                         <div class="col-sm-12">
-                           <button class="send_btn" onclick="" id="bodyfat_btn">count</button>
+                           <button class="send_btn" onclick="count_bf_simple()" id="bf_simple_btn">count</button>
                         </div>
                         <div class="col-md-12 div_result">
                            <br><br>
-                           <label><h5 id="result_calories">Result</h5></label>
+                           <label><h5 id="result_bf_simple">Result</h5></label>
                         </div>
                      </div>
-                  </div>
+                  </section>
+
+                  <section class="bodyfat_form_specified">
+                     <div class="row justify-content-md-center">
+                        <h1>Specified</h1>   
+                        <div class="col-md-12">
+                           <div class="selector" id="_">
+                              <div class="selecotr-item">
+                                 <input type="radio" id="female_specified" name="gender_specified" class="selector-item_radio" value="female">
+                                 <label for="female_specified" class="selector-item_label" id="female_label_specified">female</label>
+                              </div>
+                              <div class="selecotr-item">
+                                 <input type="radio" id="male_specified" name="gender_specified" class="selector-item_radio" value="male" checked>
+                                 <label for="male_specified" class="selector-item_label" id="male_label_specified">male</label>
+                              </div>
+                           </div>                 
+                        </div>
+                     </div>
+                  </section>
+
+
                </form>
             </div>
          </div>
       </div>
    </div>
-   <div class="foodplan">
-    <div class="container">
-       <div class="row justify-content-md-center" >
-         <div class="col-md-6">
-            <div class="selector">
-               <div class="selecotr-item">
-                  FOOD PLAN
-               </div>
-            </div>
-         </div>
-      </div>
-    </div>
-   </div>
-    
 	<script src="js/main.js"></script>
-   <script src="js/bodyfat.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script>
       $( document ).ready(function() {
