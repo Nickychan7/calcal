@@ -12,7 +12,7 @@ const specified_selector = document.getElementById('specified_bf_selector');
 
 
 function init() {
-	menu.style.display = 'none';-
+	menu.style.display = 'none';
 	calories.style.display = 'none';
 	bodyfat.style.display = 'none';
 	foodplan.style.display = 'none';
