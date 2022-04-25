@@ -33,13 +33,13 @@
             <div class="col-md-4">
                <div class="Our_box read_more" id="calories_option" onclick="show_option(1)">
                   <i><img src="icon/fire.png" alt="#"/></i>
-                  <h4>CALORIES COUNT</h4>
+                  <h4>COUNT CALORIES</h4>
                </div>
             </div>
             <div class="col-md-4">
                <div class="Our_box read_more" id="bodyfat_option" onclick="show_option(2)">
                   <i><img src="icon/body.png" id="image_bw" alt="#"/></i>
-                  <h4>BODY FAT COUNT</h4>
+                  <h4>COUNT BODY FAT</h4>
                </div>
             </div>
             <div class="col-md-4">
@@ -56,9 +56,11 @@
    	<div class="container ">
          <div class="row justify-content-md-center" >
             <div class="col-md-6">
-               <div class="selector" id="calories">
-                  <div class="selecotr-item">
-                     CALORIES COUNT
+               <div id="calories">
+                  <div class="selector">
+                     <div class="selecotr-item">
+                        COUNT CALORIES
+                     </div>
                   </div>
                </div>
                <div id="bodyfat">
@@ -86,9 +88,11 @@
                      </div>   
                   </div>
                </div>
-               <div class="selector" id="foodplan">
-                  <div class="selecotr-item">
-                     FOOD PLAN
+               <div id="foodplan">
+                  <div class="selector">
+                     <div class="selecotr-item">
+                        COMING SOON
+                     </div>
                   </div>
                </div>
             </div>
@@ -171,7 +175,6 @@
 
                   <section class="bodyfat_form_specified">
                      <div class="row justify-content-md-center">
-                        <h1>Specified</h1>   
                         <div class="col-md-12">
                            <div class="selector" id="_">
                               <div class="selecotr-item">
@@ -183,6 +186,32 @@
                                  <label for="male_specified" class="selector-item_label" id="male_label_specified">male</label>
                               </div>
                            </div>                 
+                        </div>
+                        <div class="row justify-content-md-center">
+                           <div class="col-md-10">
+                              <input class="inputarea" placeholder="weight (kg)" type="text" name="weight_specified" maxlength="3" id="weight_specified" oninput="return onlynum('weight_specified');"> 
+                           </div>
+                           <div class="col-md-10">
+                              <input class="inputarea" placeholder="waist diameter (cm)" type="text" name="waist_specified" maxlength="3" id="waist_specified" oninput="return onlynum('waist_specified');"> 
+                           </div>
+                        </div>
+                        <div class="row justify-content-md-center" id="specified_woman">
+                           <div class="col-md-10">
+                              <input class="inputarea" placeholder="hip diameter (cm)" type="text" name="hip_specified" maxlength="3" id="hip_specified" oninput="return onlynum('hip_specified');"> 
+                           </div>
+                           <div class="col-md-10">
+                              <input class="inputarea" placeholder="arm diameter (cm)" type="text" name="arm_specified" maxlength="3" id="arm_specified" oninput="return onlynum('arm_specified');"> 
+                           </div>
+                           <div class="col-md-10">
+                              <input class="inputarea" placeholder="wrist diameter (cm)" type="text" name="wrist_specified" maxlength="3" id="wrist_specified" oninput="return onlynum('wrist_specified');"> 
+                           </div>
+                        </div>
+                        <div class="col-sm-12">
+                           <button class="send_btn" onclick="count_bf_simple()" id="bf_specified_btn">count</button>
+                        </div>
+                        <div class="col-md-12 div_result">
+                           <br><br>
+                           <label><h5 id="result_bf_specified">Result</h5></label>
                         </div>
                      </div>
                   </section>

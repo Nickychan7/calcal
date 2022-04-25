@@ -23,6 +23,8 @@ function init() {
 }
 
 function refresh_bf(){
+	var bf_title = document.getElementById('bodyfat_title');
+	bf_title.style.color = '#145369';
 	specified_selector.style.backgroundColor = 'transparent';
 	specified_selector.style.color = '#145369';
 	simple_selector.style.backgroundColor = 'transparent';
@@ -286,7 +288,7 @@ function bf_type(num){
 		specified_selector.style.color = '#fff';
 		simple_selector.style.backgroundColor = 'transparent';
 		simple_selector.style.color = '#145369';
-		bodyfat_form_simple.scrollIntoView();
+		bodyfat_form_specified.scrollIntoView();
 	}
 }
 
@@ -335,7 +337,27 @@ function check_bf_type(){
 
 function count_bf_simple(){
 	var result_bf_simple = document.getElementById('result_bf_simple');
-	result_bf_simple.innerHTML = "hasilnya blom ada";
+	var gender_simple = document.getElementsByName('gender_simple');
+	var age_simple = document.getElementById('age_simple').value;
+	var weight_simple = document.getElementById('weight_simple').value;
+	var height_simple = document.getElementById('height_simple').value;
+	var total = 0;
+	var bmi = bmi_count(weight_simple,height_simple);
+	console.log(bmi);
+	for(i = 0; i < gender_simple.length; i++) {
+		if (gender_simple[i].checked) {
+			if (gender_simple[i].value=="male") {
+				console.log("masuk male");
+				total = (1.2 * bmi) + (0.23 * age_simple) - 10.8 - 5.4;
+				result_bf_simple.innerHTML = "Male Your Body Fat is "+comma_number(total)+"%";
+			}
+			else if (gender_simple[i].value=="female") {
+				console.log("masuk female");
+				total = (1.2 * bmi) + (0.23 * age_simple) - 5.4;
+				result_bf_simple.innerHTML = "Your Body Fat is "+comma_number(total)+"%";
+			}
+		}
+	}
 }
 
 init();
