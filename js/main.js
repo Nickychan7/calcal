@@ -333,6 +333,7 @@ function check_bf_type(){
 	document.getElementById('male_simple').checked = true;
 	document.getElementById('male_specified').checked = true;
 	radio_bf_simple();
+	radio_bf_specified();
 }
 
 function count_bf_simple(){
@@ -343,20 +344,104 @@ function count_bf_simple(){
 	var height_simple = document.getElementById('height_simple').value;
 	var total = 0;
 	var bmi = bmi_count(weight_simple,height_simple);
-	console.log(bmi);
 	for(i = 0; i < gender_simple.length; i++) {
 		if (gender_simple[i].checked) {
 			if (gender_simple[i].value=="male") {
-				console.log("masuk male");
 				total = (1.2 * bmi) + (0.23 * age_simple) - 10.8 - 5.4;
 				result_bf_simple.innerHTML = "Male Your Body Fat is "+comma_number(total)+"%";
 			}
 			else if (gender_simple[i].value=="female") {
-				console.log("masuk female");
 				total = (1.2 * bmi) + (0.23 * age_simple) - 5.4;
 				result_bf_simple.innerHTML = "Your Body Fat is "+comma_number(total)+"%";
 			}
 		}
+	}
+}
+
+function radio_bf_specified(){
+	var gender_specified = document.getElementsByName('gender_specified');
+	var female_label =document.getElementById('female_label_specified');
+	var male_label =document.getElementById('male_label_specified');
+	var result_bf_specified = document.getElementById('result_bf_specified');
+	var selector_bf_specified = document.getElementById('selector_bf_specified');
+	var bf_specified_btn = document.getElementById('bf_specified_btn');
+	var bodyfat_title = document.getElementById('bodyfat_title');
+	var simple_bf_type = document.getElementById('simple_bf_selector');
+	var specified_bf_type = document.getElementById('specified_bf_selector');
+
+	for(i = 0; i < gender_specified.length; i++) {
+		if (gender_specified[i].checked) {
+			if (gender_specified[i].value=="male") {
+				bf_specified_btn.style.backgroundColor = "#145369";
+        		selector_bf_specified.style.color = "#145369";
+        		bodyfat_title.style.color = "#145369";
+        		female_label.style.color = "#145369";
+        		male_label.style.color = "#145369";
+        		result_bf_specified.style.color = "#145369";	
+        		simple_bf_type.style.color = "#145369";
+        		specified_bf_type.style.backgroundColor = "#145369";
+        		specified_woman_input(false);
+        	}
+			else if (gender_specified[i].value=="female") {
+				bf_specified_btn.style.backgroundColor = "#fc9483";
+	        	selector_bf_specified.style.color = "#fc9483";
+	        	bodyfat_title.style.color = "#fc9483";
+	        	female_label.style.color = "#fc9483";
+        		male_label.style.color = "#fc9483";
+	        	result_bf_specified.style.color = "#fc9483";
+	        	simple_bf_type.style.color = "#fc9483";
+	        	specified_bf_type.style.backgroundColor = "#fc9483";
+	        	specified_woman_input(true);
+			}
+		}
+	}
+
+}
+
+function specified_woman_input(status){
+	var hip = document.getElementById('hip_specified');
+	if (status==true) {
+		hip.style.display = 'block';
+	}
+	else{
+		hip.style.display = 'none';
+	}
+}
+
+function count_bf_specified(){
+	var result = document.getElementById('result_bf_specified');
+	var bf_specified_btn = document.getElementById('bf_specified_btn');
+	var gender_specified = document.getElementsByName('gender_specified');
+
+	var height_specified = document.getElementById('height_specified').value;
+	var waist_specified = document.getElementById('waist_specified').value;
+	var hip_specified = document.getElementById('hip_specified').value;
+	var neck_specified = document.getElementById('neck_specified').value;
+
+	var bf_percent = 0;
+
+	for(i = 0; i < gender_specified.length; i++) {
+		if (gender_specified[i].checked) {
+			if (gender_specified[i].value == "male") {
+				bf_percent = 495 / ( 1.0324 - 0.19077 * Math.log10(waist_specified - neck_specified) + 0.15456 * Math.log10(height_specified) ) - 450;
+				result.innerHTML = "Your body fat is "+comma_number(bf_percent)+"%";
+			}
+			else if (gender_specified[i].value == "female"){
+				bf_percent = 495 / ( 1.29579 - 0.35004 * Math.log10( waist_specified + hip_specified - neck_specified ) + 0.22100 * Math.log10( height_specified ) ) - 450;
+				result.innerHTML = "comming soon";
+			}
+		}
+
+	}
+
+
+}
+function clear_bf(type){
+	if (type=="simple") {
+		//
+	}
+	else{
+		//
 	}
 }
 

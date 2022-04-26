@@ -176,38 +176,34 @@
                   <section class="bodyfat_form_specified">
                      <div class="row justify-content-md-center">
                         <div class="col-md-12">
-                           <div class="selector" id="_">
+                           <div class="selector" id="selector_bf_specified">
                               <div class="selecotr-item">
-                                 <input type="radio" id="female_specified" name="gender_specified" class="selector-item_radio" value="female">
+                                 <input type="radio" id="female_specified" name="gender_specified" class="selector-item_radio" value="female" onclick="radio_bf_specified()">
                                  <label for="female_specified" class="selector-item_label" id="female_label_specified">female</label>
                               </div>
                               <div class="selecotr-item">
-                                 <input type="radio" id="male_specified" name="gender_specified" class="selector-item_radio" value="male" checked>
+                                 <input type="radio" id="male_specified" name="gender_specified" class="selector-item_radio" value="male" onclick="radio_bf_specified()" checked>
                                  <label for="male_specified" class="selector-item_label" id="male_label_specified">male</label>
                               </div>
                            </div>                 
                         </div>
-                        <div class="row justify-content-md-center">
-                           <div class="col-md-10">
-                              <input class="inputarea" placeholder="weight (kg)" type="text" name="weight_specified" maxlength="3" id="weight_specified" oninput="return onlynum('weight_specified');"> 
-                           </div>
-                           <div class="col-md-10">
-                              <input class="inputarea" placeholder="waist diameter (cm)" type="text" name="waist_specified" maxlength="3" id="waist_specified" oninput="return onlynum('waist_specified');"> 
-                           </div>
+                        <div class="col-md-12">
+                           <input class="inputarea" placeholder="height (cm)" type="text" name="height_specified" maxlength="3" id="height_specified" oninput="return onlynum('height_specified');"> 
                         </div>
-                        <div class="row justify-content-md-center" id="specified_woman">
-                           <div class="col-md-10">
-                              <input class="inputarea" placeholder="hip diameter (cm)" type="text" name="hip_specified" maxlength="3" id="hip_specified" oninput="return onlynum('hip_specified');"> 
-                           </div>
-                           <div class="col-md-10">
-                              <input class="inputarea" placeholder="arm diameter (cm)" type="text" name="arm_specified" maxlength="3" id="arm_specified" oninput="return onlynum('arm_specified');"> 
-                           </div>
-                           <div class="col-md-10">
-                              <input class="inputarea" placeholder="wrist diameter (cm)" type="text" name="wrist_specified" maxlength="3" id="wrist_specified" oninput="return onlynum('wrist_specified');"> 
-                           </div>
+                        <div class="col-md-12">
+                           <input class="inputarea" placeholder="neck diameter (cm)" type="text" name="neck_specified" maxlength="3" id="neck_specified" oninput="return onlynum('neck_specified');"> 
                         </div>
+                        <div class="col-md-12">
+                           <input class="inputarea" placeholder="waist diameter (cm)" type="text" name="waist_specified" maxlength="3" id="waist_specified" oninput="return onlynum('waist_specified');"> 
+                        </div>
+            
+                        <div class="col-md-12">
+                           <input class="inputarea" placeholder="hip diameter (cm)" type="text" name="hip_specified" maxlength="3" id="hip_specified" oninput="return onlynum('hip_specified');"> 
+                        </div>
+                        
+
                         <div class="col-sm-12">
-                           <button class="send_btn" onclick="count_bf_simple()" id="bf_specified_btn">count</button>
+                           <button class="send_btn" onclick="count_bf_specified()" id="bf_specified_btn">count</button>
                         </div>
                         <div class="col-md-12 div_result">
                            <br><br>
