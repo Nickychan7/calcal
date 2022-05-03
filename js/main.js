@@ -10,7 +10,6 @@ const bodyfat_form_specified = document.querySelector('.bodyfat_form_specified')
 const simple_selector = document.getElementById('simple_bf_selector');
 const specified_selector = document.getElementById('specified_bf_selector');
 
-
 function init() {
 	menu.style.display = 'none';
 	calories.style.display = 'none';
@@ -348,7 +347,7 @@ function count_bf_simple(){
 		if (gender_simple[i].checked) {
 			if (gender_simple[i].value=="male") {
 				total = (1.2 * bmi) + (0.23 * age_simple) - 10.8 - 5.4;
-				result_bf_simple.innerHTML = "Male Your Body Fat is "+comma_number(total)+"%";
+				result_bf_simple.innerHTML = "Your Body Fat is "+comma_number(total)+"%";
 			}
 			else if (gender_simple[i].value=="female") {
 				total = (1.2 * bmi) + (0.23 * age_simple) - 5.4;
@@ -419,23 +418,68 @@ function count_bf_specified(){
 	var neck_specified = document.getElementById('neck_specified').value;
 
 	var bf_percent = 0;
+	var gender;
 
 	for(i = 0; i < gender_specified.length; i++) {
 		if (gender_specified[i].checked) {
 			if (gender_specified[i].value == "male") {
 				bf_percent = 495 / ( 1.0324 - 0.19077 * Math.log10(waist_specified - neck_specified) + 0.15456 * Math.log10(height_specified) ) - 450;
-				result.innerHTML = "Your body fat is "+comma_number(bf_percent)+"%";
+				console.log("Body fat : "+bf_percent);
 			}
 			else if (gender_specified[i].value == "female"){
-				bf_percent = 495 / ( 1.29579 - 0.35004 * Math.log10( waist_specified + hip_specified - neck_specified ) + 0.22100 * Math.log10( height_specified ) ) - 450;
-				result.innerHTML = "comming soon";
+				bf_percent = 0;
 			}
+			gender = gender_specified[i].value;
 		}
 
 	}
+	
+	result.innerHTML = "Your body fat is "+bf_percent.toFixed(1)+"%<br>"+bf_category(bf_percent,gender);
 
 
 }
+
+function bf_category(bf_percent,gender){
+	if(gender=="male"){
+		if (bf_percent<=5.9) {
+			return "Category : Essential fat";
+		}
+		else if (bf_percent<=13.9) {
+			return "Category : Athletes";
+		}
+		else if (bf_percent<=17.9) {
+			return "Category : Fitness";
+		}
+		else if (bf_percent<=24.9) {
+			return "Category : Acceptable";
+		}
+		else if (bf_percent>25) {
+			return "Category : Obesity";
+		}
+	}
+	else if (gender=="female") {
+		if (bf_percent<=0) {
+			return "coming soon";
+		}
+		else if (bf_percent<=13.9) {
+			return "Category : Essential fat";
+		}
+		else if (bf_percent<=20.9) {
+			return "Category : Athletes";
+		}
+		else if (bf_percent<=24.9) {
+			return "Category : Fitness"
+		}
+		else if (bf_percent<=31.9) {
+			return "Category : Acceptable";
+		}
+		else if (bf_percent>32) {
+			return "Category : Obesity";
+		}
+	}
+	
+}
+
 function clear_bf(type){
 	if (type=="simple") {
 		//
