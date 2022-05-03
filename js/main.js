@@ -279,6 +279,7 @@ function bf_type(num){
 		specified_selector.style.backgroundColor = 'transparent';
 		specified_selector.style.color = '#145369';
 		bodyfat_form_simple.scrollIntoView();
+		clear_bf("simple");
 	}
 	else if (num == 1) {
 		bodyfat_form_simple.style.display = 'none';
@@ -288,8 +289,10 @@ function bf_type(num){
 		simple_selector.style.backgroundColor = 'transparent';
 		simple_selector.style.color = '#145369';
 		bodyfat_form_specified.scrollIntoView();
+		clear_bf("specified");
 	}
 }
+
 
 function radio_bf_simple(){
 	var gender_simple = document.getElementsByName('gender_simple');
@@ -329,8 +332,6 @@ function radio_bf_simple(){
 }
 
 function check_bf_type(){
-	document.getElementById('male_simple').checked = true;
-	document.getElementById('male_specified').checked = true;
 	radio_bf_simple();
 	radio_bf_specified();
 }
@@ -343,18 +344,21 @@ function count_bf_simple(){
 	var height_simple = document.getElementById('height_simple').value;
 	var total = 0;
 	var bmi = bmi_count(weight_simple,height_simple);
+	var gender;
 	for(i = 0; i < gender_simple.length; i++) {
 		if (gender_simple[i].checked) {
 			if (gender_simple[i].value=="male") {
 				total = (1.2 * bmi) + (0.23 * age_simple) - 10.8 - 5.4;
-				result_bf_simple.innerHTML = "Your Body Fat is "+comma_number(total)+"%";
+				gender = gender_simple[i].value;
 			}
 			else if (gender_simple[i].value=="female") {
 				total = (1.2 * bmi) + (0.23 * age_simple) - 5.4;
-				result_bf_simple.innerHTML = "Your Body Fat is "+comma_number(total)+"%";
+				gender = gender_simple[i].value;
 			}
 		}
+		
 	}
+	result_bf_simple.innerHTML = "Your Body Fat is "+comma_number(total)+"%<br>"+bf_category(total,gender);
 }
 
 function radio_bf_specified(){
@@ -425,17 +429,17 @@ function count_bf_specified(){
 			if (gender_specified[i].value == "male") {
 				bf_percent = 495 / ( 1.0324 - 0.19077 * Math.log10(waist_specified - neck_specified) + 0.15456 * Math.log10(height_specified) ) - 450;
 				console.log("Body fat : "+bf_percent);
+				gender = gender_specified[i].value;
 			}
 			else if (gender_specified[i].value == "female"){
 				bf_percent = 0;
+				gender = gender_specified[i].value;
 			}
-			gender = gender_specified[i].value;
+			
 		}
 
 	}
-	
 	result.innerHTML = "Your body fat is "+bf_percent.toFixed(1)+"%<br>"+bf_category(bf_percent,gender);
-
 
 }
 
@@ -482,11 +486,29 @@ function bf_category(bf_percent,gender){
 
 function clear_bf(type){
 	if (type=="simple") {
-		//
+		document.getElementById('male_simple').checked = true;
+		radio_bf_simple()
+
+		document.getElementById('height_specified').value ="";
+		document.getElementById('waist_specified').value ="";
+		document.getElementById('hip_specified').value ="";
+		document.getElementById('neck_specified').value ="";
+		document.getElementById('result_bf_specified').innerHTML ="Result";
+		
 	}
-	else{
-		//
+	else if(type=="specified"){
+		document.getElementById('male_specified').checked = true;
+		radio_bf_specified();
+
+		document.getElementById('age_simple').value ="";
+		document.getElementById('weight_simple').value ="";
+		document.getElementById('height_simple').value ="";
+		document.getElementById('result_bf_simple').innerHTML ="Result";
 	}
+}
+
+function input_bf_check(type){
+	//
 }
 
 init();
