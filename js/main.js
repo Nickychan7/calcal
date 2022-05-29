@@ -8,7 +8,7 @@ const calories_form = document.querySelector('.calories_form');
 const bodyfat_form_simple = document.querySelector('.bodyfat_form_simple');
 const bodyfat_form_specified = document.querySelector('.bodyfat_form_specified');
 const simple_selector = document.getElementById('simple_bf_selector');
-const specified_selector = document.getElementById('specified_bf_selector');
+
 
 function init() {
 	menu.style.display = 'none';
@@ -19,15 +19,7 @@ function init() {
 	calories_form.style.display = 'none';
 	bodyfat_form_simple.style.display = 'none';
 	bodyfat_form_specified.style.display = 'none';
-}
-
-function refresh_bf(){
-	var bf_title = document.getElementById('bodyfat_title');
-	bf_title.style.color = '#145369';
-	specified_selector.style.backgroundColor = 'transparent';
-	specified_selector.style.color = '#145369';
-	simple_selector.style.backgroundColor = 'transparent';
-	simple_selector.style.color = '#145369';
+	fp_login_btn();
 }
 
 function show_option(option){
@@ -40,8 +32,6 @@ function show_option(option){
 		foodplan.style.display = 'none';
 		bodyfat_form_simple.style.display = 'none';
 		bodyfat_form_specified.style.display = 'none';
-		radio_button();
-		refresh_bf();
 		calories.scrollIntoView();
 	}
 	else if(option == 2){
@@ -51,6 +41,7 @@ function show_option(option){
 		bodyfat.style.display = 'block';
 		calories_form.style.display = 'none';
 		foodplan.style.display = 'none';
+		bf_type(0);
 		bodyfat.scrollIntoView();
 	}
 	else if(option == 3){
@@ -59,7 +50,6 @@ function show_option(option){
 		calories.style.display = 'none';
 		bodyfat.style.display = 'none';
 		foodplan.style.display = 'block';
-		refresh_bf();
 		foodplan.scrollIntoView();
 	}
 	
@@ -84,39 +74,6 @@ function onlynum(id_input) {
     }
 }
 
-function radio_button(){
-	var gender = document.getElementsByName('gender');
-	var female_label =document.getElementById('female_label');
-	var male_label =document.getElementById('male_label');
-	var result = document.getElementById('result_calories');
-	var selector_calories = document.getElementById('selector_calories');
-	var calories_btn = document.getElementById('calories_btn');
-	var calories_title = document.getElementById('calories');
-
-	for(i = 0; i < gender.length; i++) {
-        if(gender[i].checked){
-        	if(gender[i].value=="male"){
-        		calories_btn.style.backgroundColor = "#145369";
-        		selector_calories.style.color = "#145369";
-        		calories_title.style.color = "#145369";
-        		female_label.style.color = "#145369";
-        		male_label.style.color = "#145369";
-        		result.style.color = "#145369";
-
-	        }
-	        else if (gender[i].value=="female"){
-	        	calories_btn.style.backgroundColor = "#fc9483";
-	        	selector_calories.style.color = "#fc9483";
-	        	calories_title.style.color = "#fc9483";
-	        	female_label.style.color = "#fc9483";
-        		male_label.style.color = "#fc9483";
-	        	result.style.color = "#fc9483";
-	        }	     	
-        }
-        
-        
-    }
-}
 function status_input_calories(status){
 	document.getElementById("female").disabled = status;
 	document.getElementById("male").disabled = status;
@@ -159,7 +116,7 @@ function check_input(){
 	}
 	else if (calories_btn.innerHTML == "edit"){
 		status_input_calories(false);
-    	document.getElementById('result_calories').innerHTML = "Result";
+    	document.getElementById('result_calories').innerHTML = "";
     	
     	calories_btn.innerHTML = "count";
     }
@@ -270,71 +227,32 @@ function comma_number(num) {
 
 function bf_type(num){
 	div_form.style.display = 'block';
-	check_bf_type();
 	if (num == 0) {
+
+		document.getElementById("simple-mode").style.color = "#fff";
+		document.getElementById("simple-mode").style.background = "#000";
+		document.getElementById("specified-mode").style.color = "#000";
+		document.getElementById("specified-mode").style.background = "transparent";
+		
 		bodyfat_form_simple.style.display = 'block';
 		bodyfat_form_specified.style.display = 'none';
-		simple_selector.style.backgroundColor = '#145369';
-		simple_selector.style.color = '#fff';
-		specified_selector.style.backgroundColor = 'transparent';
-		specified_selector.style.color = '#145369';
+
 		bodyfat_form_simple.scrollIntoView();
 		clear_bf("simple");
 	}
 	else if (num == 1) {
+		document.getElementById("simple-mode").style.color = "#000";
+		document.getElementById("simple-mode").style.background = "transparent";
+		document.getElementById("specified-mode").style.color = "#fff";
+		document.getElementById("specified-mode").style.background = "#000";
+
 		bodyfat_form_simple.style.display = 'none';
 		bodyfat_form_specified.style.display = 'block';
-		specified_selector.style.backgroundColor = '#145369';
-		specified_selector.style.color = '#fff';
-		simple_selector.style.backgroundColor = 'transparent';
-		simple_selector.style.color = '#145369';
 		bodyfat_form_specified.scrollIntoView();
 		clear_bf("specified");
 	}
 }
 
-
-function radio_bf_simple(){
-	var gender_simple = document.getElementsByName('gender_simple');
-	var female_label =document.getElementById('female_label_simple');
-	var male_label =document.getElementById('male_label_simple');
-	var result_bf_simple = document.getElementById('result_bf_simple');
-	var selector_bf_simple = document.getElementById('selector_bf_simple');
-	var bf_simple_btn = document.getElementById('bf_simple_btn');
-	var bodyfat_title = document.getElementById('bodyfat_title');
-	var simple_bf_type = document.getElementById('simple_bf_selector');
-	var specified_bf_type = document.getElementById('specified_bf_selector');
-
-	for(i = 0; i < gender_simple.length; i++) {
-		if (gender_simple[i].checked) {
-			if (gender_simple[i].value=="male") {
-				bf_simple_btn.style.backgroundColor = "#145369";
-        		selector_bf_simple.style.color = "#145369";
-        		bodyfat_title.style.color = "#145369";
-        		female_label.style.color = "#145369";
-        		male_label.style.color = "#145369";
-        		result_bf_simple.style.color = "#145369";	
-        		simple_bf_type.style.backgroundColor = "#145369";
-        		specified_bf_type.style.color = "#145369";		
-        	}
-			else if (gender_simple[i].value=="female") {
-				bf_simple_btn.style.backgroundColor = "#fc9483";
-	        	selector_bf_simple.style.color = "#fc9483";
-	        	bodyfat_title.style.color = "#fc9483";
-	        	female_label.style.color = "#fc9483";
-        		male_label.style.color = "#fc9483";
-	        	result_bf_simple.style.color = "#fc9483";
-	        	simple_bf_type.style.backgroundColor = "#fc9483";
-	        	specified_bf_type.style.color = "#fc9483";
-			}
-		}
-	}
-}
-
-function check_bf_type(){
-	radio_bf_simple();
-	radio_bf_specified();
-}
 
 function count_bf_simple(){
 	var result_bf_simple = document.getElementById('result_bf_simple');
@@ -359,46 +277,6 @@ function count_bf_simple(){
 		
 	}
 	result_bf_simple.innerHTML = "Your Body Fat is "+comma_number(total)+"%<br>"+bf_category(total,gender);
-}
-
-function radio_bf_specified(){
-	var gender_specified = document.getElementsByName('gender_specified');
-	var female_label =document.getElementById('female_label_specified');
-	var male_label =document.getElementById('male_label_specified');
-	var result_bf_specified = document.getElementById('result_bf_specified');
-	var selector_bf_specified = document.getElementById('selector_bf_specified');
-	var bf_specified_btn = document.getElementById('bf_specified_btn');
-	var bodyfat_title = document.getElementById('bodyfat_title');
-	var simple_bf_type = document.getElementById('simple_bf_selector');
-	var specified_bf_type = document.getElementById('specified_bf_selector');
-
-	for(i = 0; i < gender_specified.length; i++) {
-		if (gender_specified[i].checked) {
-			if (gender_specified[i].value=="male") {
-				bf_specified_btn.style.backgroundColor = "#145369";
-        		selector_bf_specified.style.color = "#145369";
-        		bodyfat_title.style.color = "#145369";
-        		female_label.style.color = "#145369";
-        		male_label.style.color = "#145369";
-        		result_bf_specified.style.color = "#145369";	
-        		simple_bf_type.style.color = "#145369";
-        		specified_bf_type.style.backgroundColor = "#145369";
-        		specified_woman_input(false);
-        	}
-			else if (gender_specified[i].value=="female") {
-				bf_specified_btn.style.backgroundColor = "#fc9483";
-	        	selector_bf_specified.style.color = "#fc9483";
-	        	bodyfat_title.style.color = "#fc9483";
-	        	female_label.style.color = "#fc9483";
-        		male_label.style.color = "#fc9483";
-	        	result_bf_specified.style.color = "#fc9483";
-	        	simple_bf_type.style.color = "#fc9483";
-	        	specified_bf_type.style.backgroundColor = "#fc9483";
-	        	specified_woman_input(true);
-			}
-		}
-	}
-
 }
 
 function specified_woman_input(status){
@@ -428,12 +306,14 @@ function count_bf_specified(){
 		if (gender_specified[i].checked) {
 			if (gender_specified[i].value == "male") {
 				bf_percent = 495 / ( 1.0324 - 0.19077 * Math.log10(waist_specified - neck_specified) + 0.15456 * Math.log10(height_specified) ) - 450;
-				console.log("Body fat : "+bf_percent);
+				
 				gender = gender_specified[i].value;
 			}
 			else if (gender_specified[i].value == "female"){
-				bf_percent = 0;
+				//bf_percent = (495 / ( 1.29579 - 0.35004 * Math.log10( to_inch(waist_specified) + to_inch(hip_specified) - to_inch(neck_specified) ) + 0.22100 * Math.log10( to_inch(height_specified) ) )) - 450;
 				gender = gender_specified[i].value;
+				//bf_percent = 163.205 * Math.log10(to_inch(waist_specified) + to_inch(hip_specified) - to_inch(neck_specified) ) - 97.684 * (Math.log10(to_inch(height_specified))) - 78.387;
+				console.log("Body fat : "+bf_percent);
 			}
 			
 		}
@@ -441,6 +321,10 @@ function count_bf_specified(){
 	}
 	result.innerHTML = "Your body fat is "+bf_percent.toFixed(1)+"%<br>"+bf_category(bf_percent,gender);
 
+}
+
+function to_inch(val){
+	return val*0,393701;
 }
 
 function bf_category(bf_percent,gender){
@@ -487,28 +371,42 @@ function bf_category(bf_percent,gender){
 function clear_bf(type){
 	if (type=="simple") {
 		document.getElementById('male_simple').checked = true;
-		radio_bf_simple()
 
 		document.getElementById('height_specified').value ="";
 		document.getElementById('waist_specified').value ="";
 		document.getElementById('hip_specified').value ="";
 		document.getElementById('neck_specified').value ="";
-		document.getElementById('result_bf_specified').innerHTML ="Result";
+		document.getElementById('result_bf_specified').innerHTML ="";
 		
 	}
 	else if(type=="specified"){
 		document.getElementById('male_specified').checked = true;
-		radio_bf_specified();
 
 		document.getElementById('age_simple').value ="";
 		document.getElementById('weight_simple').value ="";
 		document.getElementById('height_simple').value ="";
-		document.getElementById('result_bf_simple').innerHTML ="Result";
+		document.getElementById('result_bf_simple').innerHTML ="";
 	}
 }
 
 function input_bf_check(type){
 	//
+}
+
+function fp_register_btn() {
+	document.getElementById('toggle_btn-register').style.color = "#fff";
+	document.getElementById('toggle_btn-login').style.color = "#000";
+	document.getElementById('fp_login').style.left = "-400px";
+	document.getElementById('fp_register').style.left = "50px";
+	document.getElementById('btn_fp_box').style.left = "115px";
+}
+
+function fp_login_btn() {
+	document.getElementById('toggle_btn-register').style.color = "#000";
+	document.getElementById('toggle_btn-login').style.color = "#fff";
+	document.getElementById('fp_login').style.left = "50px";
+	document.getElementById('fp_register').style.left = "450px";
+	document.getElementById('btn_fp_box').style.left = "0px";
 }
 
 init();

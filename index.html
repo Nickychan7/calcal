@@ -6,56 +6,58 @@
    <!-- mobile metas -->
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="css/resposive.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   <meta charset="utf-8">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/resposive.css">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
-<body>
+<body style="background-color: #ecf0f3;">
    <div class="loader_bg">
      <div class="loader"></div>
    </div>
-
-   <div class="main">
+   <div class="header">
       <div class="row justify-content-md-center">
          <div class="col-md-6">
             <div class="title">
                <h1>CalCal</h1>
-               <span>Calculator Calories by Nick</span>
+               <span>Nick's Calculator Calories</span>
             </div>
          </div>
       </div>
+   </div>
+   <div class="main">
      <div class="container">
          <div class="row">
             <div class="col-md-4">
                <div class="Our_box read_more" id="calories_option" onclick="show_option(1)">
-                  <i><img src="icon/fire.png" alt="#"/></i>
-                  <h4>COUNT CALORIES</h4>
+                  <i><img class="icon-menu" src="icon/fire.png" alt="#"/></i>
+                  <br>
+                  COUNT CALORIES
                </div>
             </div>
             <div class="col-md-4">
                <div class="Our_box read_more" id="bodyfat_option" onclick="show_option(2)">
-                  <i><img src="icon/body.png" id="image_bw" alt="#"/></i>
-                  <h4>COUNT BODY FAT</h4>
+                  <i><img class="icon-menu" src="icon/body.png" id="image_bw" alt="#"/></i>
+                  <br>
+                  COUNT BODY FAT
                </div>
             </div>
             <div class="col-md-4">
                <div class="Our_box read_more" id="foodplan_option" onclick="show_option(3)">
-                  <i><img src="icon/food.png" alt="#"/></i>
-                  <h4>FOOD PLAN</h4>
+                  <i><img class="icon-menu" src="icon/food.png" alt="#"/></i>
+                  <br>
+                  FOOD PLAN
                </div>
             </div>
          </div>
-         
      </div>
    </div>
    <div class="menu">
-   	<div class="container ">
+      <div class="container">
          <div class="row justify-content-md-center" >
-            <div class="col-md-6">
+            <div class="col-md-4">
                <div id="calories">
                   <div class="selector">
                      <div class="selecotr-item">
@@ -72,15 +74,15 @@
                   <div class="row justify-content-md-center">
                      <div class="col-md-8">
                         <div class="bf_type row">
-                           <div class="selector_bf_type" id="simple_bf_selector" onclick="bf_type(0)">
-                              <div class="selecotr-item">
-                                 <input type="button" id="simple_bf" name="bf_type" class="selector-item_radio" value="simple">
+                           <div class="selector_bf_type" onclick="bf_type(0)" id="simple-mode">
+                              <div class="option">
+                                 <input type="button" id="simple_bf" name="bf_type" class="selector-item_radio" value="simple" checked>
                                  <label for="bf_type" class="selector-item_label">Simple</label>
                               </div>
                            </div> 
-                           <div class="selector_bf_type" id="specified_bf_selector" onclick="bf_type(1)">
-                              <div class="selecotr-item">
-                                 <input type="radio" name="bf_type" id="specified_bf" class="selector-item_radio" value="specified">
+                           <div class="selector_bf_type" onclick="bf_type(1)" id="specified-mode">
+                              <div class="option">
+                                 <input type="radio"  name="bf_type" id="specified_bf" class="selector-item_radio" value="specified">
                                  <label for="bf_type" class="selector-item_label">Specified</label>
                               </div>
                            </div>
@@ -91,29 +93,53 @@
                <div id="foodplan">
                   <div class="selector">
                      <div class="selecotr-item">
-                        COMING SOON
+                        FOOD PLAN
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="foodplan_form">
+                        <div class="button_box">
+                           <div id="btn_fp_box">
+                           </div>
+                           <button class="toggle_btn" id="toggle_btn-login" onclick="fp_login_btn()">Log In</button>
+                           <button class="toggle_btn" id="toggle_btn-register" onclick="fp_register_btn()">Register</button>
+                        </div>
+                        <form method="post" id="fp_login" class="inputarea_fp" action="php/foodplan_login.php">
+                           <input type="text" class="inputfield_fp" name="fp_login_username" placeholder="Username" required>
+                           <input type="password" class="inputfield_fp" name="fp_login_password" placeholder="Password" required><br>
+                           <input type="checkbox" class="check_box"><span class="span_login">Remember Password</span>
+                           <button type="submit" class="submit_fp" name="submit_fp_login">Log In</button>
+                        </form>
+                        <form method="post" id="fp_register" class="inputarea_fp" action="php/foodplan_register.php">
+                           <input type="text" class="inputfield_fp" name="username" placeholder="Username" required>
+                           <input type="password" class="inputfield_fp" name="password" placeholder="Password" required>
+                           <input type="password" class="inputfield_fp" name="password2" placeholder="Confirm Password" required><br>
+                           <input type="checkbox" class="check_box"><span class="span_login">I agree to the term & conditions</span>
+                           <button type="submit" name="submit" class="submit_fp">Register</button>
+                        </form>
                      </div>
                   </div>
                </div>
+
             </div>
-         </div>	
-   	</div>
+         </div>   
+      </div>
    </div>
    <div class="div_form">
       <div class="container">
          <div class="row justify-content-md-center">
-            <div class="col-md-6">
+            <div class="col-md-5">
                <form id="main_form" name="main_form" class="main_form" onsubmit="return false">
                   <section class="calories_form">
                     <div class="row">
                         <div class="col-md-12">
                            <div class="selector" id="selector_calories">
                                 <div class="selecotr-item">
-                                    <input type="radio" id="female" name="gender" class="selector-item_radio" value="female" onclick="radio_button();">
+                                    <input type="radio" id="female" name="gender" class="selector-item_radio" value="female" checked>
                                     <label for="female" class="selector-item_label" id="female_label">female</label>
                                 </div>
                                 <div class="selecotr-item">
-                                    <input type="radio" id="male" name="gender" class="selector-item_radio" value="male" onclick="radio_button();" checked>
+                                    <input type="radio" id="male" name="gender" class="selector-item_radio" value="male">
                                     <label for="male" class="selector-item_label" id="male_label">male</label>
                                 </div>
                             </div>                 
@@ -133,9 +159,8 @@
                         <div class="col-sm-12">
                            <button class="send_btn" onclick="check_input()" id="calories_btn">count</button>
                         </div>
-                        <div class="col-md-12 div_result">
-                           <br><br>
-                           <label><h5 id="result_calories">Result</h5></label>
+                        <div class="col-md-12">
+                           <label class="result-text" id="result_calories"></label>
                         </div>
                      </div>
                   </section>
@@ -145,11 +170,11 @@
                         <div class="col-md-12">
                            <div class="selector" id="selector_bf_simple">
                               <div class="selecotr-item">
-                                 <input type="radio" id="female_simple" name="gender_simple" class="selector-item_radio" value="female" onclick="radio_bf_simple()">
+                                 <input type="radio" id="female_simple" name="gender_simple" class="selector-item_radio" value="female" >
                                  <label for="female_simple" class="selector-item_label" id="female_label_simple">female</label>
                               </div>
                               <div class="selecotr-item">
-                                 <input type="radio" id="male_simple" name="gender_simple" class="selector-item_radio" value="male" onclick="radio_bf_simple()" checked>
+                                 <input type="radio" id="male_simple" name="gender_simple" class="selector-item_radio" value="male" checked>
                                  <label for="male_simple" class="selector-item_label" id="male_label_simple">male</label>
                               </div>
                            </div>                 
@@ -166,9 +191,9 @@
                         <div class="col-sm-12">
                            <button class="send_btn" onclick="count_bf_simple()" id="bf_simple_btn">count</button>
                         </div>
-                        <div class="col-md-12 div_result">
+                        <div class="col-md-12 ">
                            <br><br>
-                           <label><h5 id="result_bf_simple">Result</h5></label>
+                           <label class="result-text" id="result_bf_simple"></label>
                         </div>
                      </div>
                   </section>
@@ -178,51 +203,49 @@
                         <div class="col-md-12">
                            <div class="selector" id="selector_bf_specified">
                               <div class="selecotr-item">
-                                 <input type="radio" id="female_specified" name="gender_specified" class="selector-item_radio" value="female" onclick="radio_bf_specified()">
+                                 <input type="radio" id="female_specified" name="gender_specified" class="selector-item_radio" value="female">
                                  <label for="female_specified" class="selector-item_label" id="female_label_specified">female</label>
                               </div>
                               <div class="selecotr-item">
-                                 <input type="radio" id="male_specified" name="gender_specified" class="selector-item_radio" value="male" onclick="radio_bf_specified()" checked>
+                                 <input type="radio" id="male_specified" name="gender_specified" class="selector-item_radio" value="male" checked>
                                  <label for="male_specified" class="selector-item_label" id="male_label_specified">male</label>
                               </div>
                            </div>                 
                         </div>
                         <div class="col-md-12">
-                           <input class="inputarea" placeholder="height (cm)" type="text" name="height_specified" maxlength="3" id="height_specified" oninput="return onlynum('height_specified');"> 
+                           <input class="inputarea" placeholder="height (cm)" type="text" name="height_specified" maxlength="3" id="height_specified" oninput="return onlynum('height_specified');" required> 
                         </div>
                         <div class="col-md-12">
-                           <input class="inputarea" placeholder="neck diameter (cm)" type="text" name="neck_specified" maxlength="3" id="neck_specified" oninput="return onlynum('neck_specified');"> 
+                           <input class="inputarea" placeholder="neck diameter (cm)" type="text" name="neck_specified" maxlength="3" id="neck_specified" oninput="return onlynum('neck_specified');" required> 
                         </div>
                         <div class="col-md-12">
-                           <input class="inputarea" placeholder="waist diameter (cm)" type="text" name="waist_specified" maxlength="3" id="waist_specified" oninput="return onlynum('waist_specified');"> 
+                           <input class="inputarea" placeholder="waist diameter (cm)" type="text" name="waist_specified" maxlength="3" id="waist_specified" oninput="return onlynum('waist_specified');" required> 
                         </div>
             
                         <div class="col-md-12">
-                           <input class="inputarea" placeholder="hip diameter (cm)" type="text" name="hip_specified" maxlength="3" id="hip_specified" oninput="return onlynum('hip_specified');"> 
+                           <input class="inputarea" placeholder="hip diameter (cm)" type="text" name="hip_specified" maxlength="3" id="hip_specified" oninput="return onlynum('hip_specified');" required>
                         </div>
-                        
 
                         <div class="col-sm-12">
                            <button class="send_btn" onclick="count_bf_specified()" id="bf_specified_btn">count</button>
                         </div>
-                        <div class="col-md-12 div_result">
+                        <div class="col-md-12 ">
                            <br><br>
-                           <label><h5 id="result_bf_specified">Result</h5></label>
+                           <label class="result-text" id="result_bf_specified"></label>
                         </div>
                      </div>
                   </section>
-
-
                </form>
             </div>
          </div>
       </div>
    </div>
-	<script src="js/main.js"></script>
+   <script src="js/main.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script>
       $( document ).ready(function() {
          $('.main').hide().delay(1900).fadeIn(200);
+         $('.header').hide().delay(1900).fadeIn(200);
          $(".loader_bg").fadeTo(800,1).fadeOut(1000);
       });
    </script>
